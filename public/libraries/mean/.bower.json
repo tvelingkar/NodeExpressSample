@@ -1,0 +1,24 @@
+{
+  "name": "mean",
+  "main": "dist/mean.js",
+  "ignore": [
+    ".tern-project",
+    "node_modules",
+    "src",
+    "test",
+    "component.json",
+    "Makefile",
+    "package.json"
+  ],
+  "homepage": "https://github.com/kordon/mean",
+  "_release": "6f3aa1d4e2",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "6f3aa1d4e201b7f1c9c7b2be7b4fb7341d74c355"
+  },
+  "_source": "https://github.com/kordon/mean.git",
+  "_target": "*",
+  "_originalSource": "mean",
+  "_direct": true
+}
