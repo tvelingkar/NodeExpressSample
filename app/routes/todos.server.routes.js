@@ -8,8 +8,8 @@ module.exports = function(app) {
 
 	app.route('/api/todos/:todoId')
 		.get(todos.read)
-		.post(users.requiresLogin, todos.hasAuthorization, todos.update)
-		.delete(users.requiresLogin, todos.hasAuthorization, todos.update);
+		.put(users.requiresLogin, todos.hasAuthorization, todos.update)
+		.delete(users.requiresLogin, todos.hasAuthorization, todos.delete);
 
 	app.param('todoId', todos.todoByID);
 };

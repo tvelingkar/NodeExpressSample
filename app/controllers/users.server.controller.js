@@ -26,22 +26,22 @@ var getErrorMessage = function(err) {
 exports.renderLogin = function(req, res, next) {
 	if (!req.user) {
 		res.render('login', {
-			title: 'Login-in Form',
+			title: 'Log-in Form',
 			messages: req.flash('error') || req.flash('info')
 		});
 	} else {
-		res.redirect('/');
+		return res.redirect('/');
 	}
 };
 
 exports.renderRegister = function(req, res, next) {
-	if(!req.user) {
+	if (!req.user) {
 		res.render('register', {
 			title: 'Register Form',
 			messages: req.flash('error')
 		});
 	} else {
-		res.redirect('/');
+		return res.redirect('/');
 	}
 };
 
@@ -54,18 +54,18 @@ exports.register = function(req, res, next) {
 			if (err) {
 				var message = getErrorMessage(err);
 				req.flash('error', message);
-				return res.redirect('/redirect');
+				return res.redirect('/register');
 			}
 
 			req.login(user, function(err) {
 				if (err) {
-					return res.next(err);
+					return next(err);
 				}
 				return res.redirect('/');
 			});
 		});
 	} else {
-		res.redirect('/');
+		return res.redirect('/');
 	}
 };
 
@@ -93,7 +93,7 @@ exports.saveOAuthUserProfile = function(req, profile, done) {
 						if (err) {
 							var message = _this.getErrorMessage(err);
 							req.flash('error', message);
-							return res.redirect('/signup');
+							return res.redirect('/register');
 						}
 
 						return done(err, user);
@@ -131,7 +131,7 @@ exports.read = function(req, res) {
 	res.json(req.user);
 };
 
-exports.userById = function(req, res, next, id) {
+exports.userByID = function(req, res, next, id) {
 	User.findOne({
 		_id: id
 	},

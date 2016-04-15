@@ -49,7 +49,7 @@ exports.todoByID = function(req, res, next, id) {
 			return next(err);
 		}
 
-		if (!tood) {
+		if (!todo) {
 			return next(new Error('Failed to load todo : ' + id));
 		}
 

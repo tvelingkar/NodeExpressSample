@@ -4,14 +4,14 @@ var users = require('../../app/controllers/users.server.controller'),
 module.exports = function(app) {
 	app.route('/users').post(users.create).get(users.list);
 
-	app.route('/user/:userId').get(users.read).put(users.update).delete(users.delete);
+	app.route('/users/:userId').get(users.read).put(users.update).delete(users.delete);
 
-	app.param('userId', users.userById);
+	app.param('userId', users.userByID);
 
 	app.route('/register').get(users.renderRegister).post(users.register);
 
 	app.route('/login').get(users.renderLogin).post(passport.authenticate('local', {
-		successRedirect: '/main',
+		successRedirect: '/',
 		failureRedirect: '/login',
 		failureFlash: true
 	}));
@@ -25,7 +25,7 @@ module.exports = function(app) {
 
 	app.get('/oauth/facebook/callback', passport.authenticate('facebook', {
 		failureRedirect: '/login',
-		successRedirect: '/main',
+		successRedirect: '/',
 		scope: ['email']
 	}));
 
@@ -35,6 +35,6 @@ module.exports = function(app) {
 
 	app.get('/oauth/twitter/callback', passport.authenticate('twitter', {
 		failureRedirect: '/login',
-		successRedirect: '/main'
+		successRedirect: '/'
 	}));
 };

@@ -12,4 +12,4 @@ module.exports = {
 		clientSecret: '8Va7oHcyz3fHPvBw4rnR62ZWEgungWMv7t47cKKMvyUrWyLfXK',
 		callbackURL: 'http://localhost:' + port + '/oauth/twitter/callback'
 	}
-}
+};

@@ -23,7 +23,7 @@ var TodoSchema = new Schema({
 	},
 	completed: {
 		type: Boolean,
-		defaut: false
+		default: false
 	}
 });
 

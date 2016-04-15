@@ -26,7 +26,7 @@ angular.module('todos').controller('TodosController', ['$scope', '$routeParams',
 		};
 
 		$scope.update = function() {
-			$scope.todo.$update(function(response) {
+			$scope.todo.$update(function() {
 				$location.path('todos/' + $scope.todo._id);
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
